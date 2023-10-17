@@ -1,8 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+
+import "./assets/lib/font-awesome/css/font-awesome.css";
+import "./assets/lib/Ionicons/css/ionicons.css";
+import "./assets/css/slim.css";
+import "./assets/css/globals.css";
+
+import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
