@@ -3,16 +3,17 @@ import { Utils } from '../utils';
 const HOST = 'http://127.0.0.1';
 const PORT = '8000';
 const URL = process.env.REACT_APP_HOST ?? `${HOST}:${PORT}`;
-const ROOT_PATH  = '/api' 
+const ROOT_PATH  = '/api';
+const TOKEN = Utils.Auth.getSessionToken();
 const HEADERS = new Headers({
     'Content-type': 'application/json',
     'Accept': 'application/json',
     'Connection': 'keep-alive',
-    'Authorization': `Bearer ${Utils.Auth.getSessionToken()}`
+    'Authorization': `Bearer ${TOKEN}`
 });
 const FORMDATA_HEADERS = new Headers({
     'Accept': 'application/json',
-    'Authorization': `Bearer ${Utils.Auth.getSessionToken()}`
+    'Authorization': `Bearer ${TOKEN}`
 });
 
 const get = (endpoint, signal=new AbortController().signal) => {

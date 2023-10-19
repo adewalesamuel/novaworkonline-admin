@@ -23,7 +23,7 @@ export const useRole = () => {
         const payload = {
             name,
 		slug,
-		permissions,
+		permissions: JSON.stringify(permissions),
 		
         };
 
@@ -33,7 +33,7 @@ export const useRole = () => {
         const payload = {
             name,
 		slug,
-		permissions,
+		permissions: JSON.stringify(permissions),
 		
         };
 
@@ -46,7 +46,7 @@ export const useRole = () => {
         setId(role.id);
         setName(role.name ?? '');
 		setSlug(role.slug ?? '');
-		setPermissions(role.permissions ?? '');
+		setPermissions(role.permissions ? JSON.parse(role.permissions): []);
 		
     }
     const emptyRole = () => {

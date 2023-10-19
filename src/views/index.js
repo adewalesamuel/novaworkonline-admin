@@ -8,7 +8,6 @@ import { InterviewRequestShowView } from "./InterviewrequestShowView";
 import { JobTitleCreateView } from "./JobTitleCreateView";
 import { JobTitleEditView } from "./JobTitleEditView";
 import { JobTitleListView } from "./JobTitleListView";
-
 import { LoginView } from "./LoginView";
 import { ProfileView } from "./ProfileView";
 import { RecruiterCreateView } from "./RecruiterCreateView";
@@ -18,8 +17,14 @@ import { SettingsView } from "./SettingsView";
 import { UserCreateView } from "./UserCreateView";
 import { UserEditView } from "./UserEditView";
 import { UserListView } from "./UserListView";
-import { UserQualifiedListView } from "./UserQualifiedListView copy";
+import { UserQualifiedListView } from "./UserQualifiedListView";
 import { UserShowView } from "./UserShowView";
+import { RoleListView } from "./RoleListView";
+import { RoleCreateView } from "./RoleCreateView";
+import { RoleEditView } from "./RoleEditView";
+import { AdminListView } from "./AdminListView";
+import { AdminCreateView } from "./AdminCreateView";
+import { AdminEditView } from "./AdminEditView";
 
 export const Views = {
     LoginView,
@@ -42,5 +47,11 @@ export const Views = {
     JobTitleCreateView,
     CountryCreateView,
     CountryListView,
-    CountryEditView
+    CountryEditView,
+    RoleListView,
+    RoleCreateView,
+    RoleEditView,
+    AdminListView,
+    AdminCreateView,
+    AdminEditView
 }

@@ -51,5 +51,3 @@ export const Components = {
 	ImageFileInput,
 	Pagination
 }
-
-
