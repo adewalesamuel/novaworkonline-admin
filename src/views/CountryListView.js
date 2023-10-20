@@ -19,7 +19,7 @@ export function CountryListView(props) {
     const navigate = useNavigate();
 
     const [countries, setJob_titles] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     const handleEditClick = (e, data) => {
         e.preventDefault();
@@ -82,20 +82,22 @@ export function CountryListView(props) {
                 </ol>
                 <h6 className="slim-pagetitle">Pays</h6>
             </div> 
-            <div className="row">
-                <div className="col-12">
-                    <div className="card card-table mb-4">
-                        <div className="card-header">
-                            <h6 className="slim-card-title">Liste des pays</h6>
-                        </div>
-                        <div className="table-responsive">
-                            <Components.Table controllers={{handleEditClick, handleDeleteClick}} 
-                            tableAttributes={tableAttributes} tableActions={tableActions} 
-                            tableData={countries}/>
+            <Components.Loader isLoading={isLoading}>
+                <div className="row">
+                    <div className="col-12">
+                        <div className="card card-table mb-4">
+                            <div className="card-header">
+                                <h6 className="slim-card-title">Liste des pays</h6>
+                            </div>
+                            <div className="table-responsive">
+                                <Components.Table controllers={{handleEditClick, handleDeleteClick}} 
+                                tableAttributes={tableAttributes} tableActions={tableActions} 
+                                tableData={countries}/>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </Components.Loader>
         </>
     )
 }

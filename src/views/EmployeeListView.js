@@ -20,7 +20,7 @@ export function EmployeeListView(props) {
     const [employees, setEmployees] = useState([]);
     const [page, setPage] = useState(1);
     const [pageLength, setPageLength] = useState(1);
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     const handleDeleteClick = async (e, employee) => {
         e.preventDefault();
@@ -87,21 +87,23 @@ export function EmployeeListView(props) {
                 </ol>
                 <h6 className="slim-pagetitle">Recrutements</h6>
             </div> 
-            <div className="row">
-                <div className="col-12">
-                    <div className="card card-table mb-4">
-                        <div className="card-header">
-                            <h6 className="slim-card-title">Liste des recrutement</h6>
+            <Components.Loader isLoading={isLoading}>
+                <div className="row">
+                    <div className="col-12">
+                        <div className="card card-table mb-4">
+                            <div className="card-header">
+                                <h6 className="slim-card-title">Liste des recrutement</h6>
+                            </div>
+                            <div className="table-responsive">
+                                <Components.Table controllers={{handleDeleteClick}} 
+                                tableAttributes={tableAttributes} tableActions={tableActions} 
+                                tableData={employees}/>
+                            </div>
+                            <Components.Pagination page={page} pageLength={pageLength} />
                         </div>
-                        <div className="table-responsive">
-                            <Components.Table controllers={{handleDeleteClick}} 
-                            tableAttributes={tableAttributes} tableActions={tableActions} 
-                            tableData={employees}/>
-                        </div>
-                        <Components.Pagination page={page} pageLength={pageLength} />
                     </div>
                 </div>
-            </div>
+            </Components.Loader>
         </>
     )
 }

@@ -22,7 +22,7 @@ export function UserQualifiedListView(props) {
     const [users, setUsers] = useState([]);
     const [page, setPage] = useState(1);
     const [pageLength, setPageLength] = useState(1);
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     const handleEditClick = (e, data) => {
         e.preventDefault();
@@ -92,22 +92,24 @@ export function UserQualifiedListView(props) {
                     </Link>
                 </ol>
                 <h6 className="slim-pagetitle">Candidats qualifiés</h6>
-            </div> 
-            <div className="row">
-                <div className="col-12">
-                    <div className="card card-table mb-4">
-                        <div className="card-header">
-                            <h6 className="slim-card-title">Liste des candidats qualifiés</h6>
+            </div>
+            <Components.Loader isLoading={isLoading}>
+                <div className="row">
+                    <div className="col-12">
+                        <div className="card card-table mb-4">
+                            <div className="card-header">
+                                <h6 className="slim-card-title">Liste des candidats qualifiés</h6>
+                            </div>
+                            <div className="table-responsive">
+                                <Components.Table controllers={{handleEditClick, handleDeleteClick}} 
+                                tableAttributes={tableAttributes} tableActions={tableActions} 
+                                tableData={users}/>
+                            </div>
+                            <Components.Pagination page={page} pageLength={pageLength} />
                         </div>
-                        <div className="table-responsive">
-                            <Components.Table controllers={{handleEditClick, handleDeleteClick}} 
-                            tableAttributes={tableAttributes} tableActions={tableActions} 
-                            tableData={users}/>
-                        </div>
-                        <Components.Pagination page={page} pageLength={pageLength} />
                     </div>
                 </div>
-            </div>
+            </Components.Loader> 
         </>
     )
 }

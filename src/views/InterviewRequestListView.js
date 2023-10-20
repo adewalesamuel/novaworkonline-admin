@@ -23,7 +23,7 @@ export function InterviewRequestListView(props) {
     const [interview_requests, setInterviewRequests] = useState([]);
     const [page, setPage] = useState(1);
     const [pageLength, setPageLength] = useState(1);
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     const handleReadClick = (e, data) => {
         e.preventDefault();
@@ -91,22 +91,24 @@ export function InterviewRequestListView(props) {
                 <ol className="breadcrumb slim-breadcrumb">
                 </ol>
                 <h6 className="slim-pagetitle">Demandes d'entretien</h6>
-            </div> 
-            <div className="row">
-                <div className="col-12">
-                    <div className="card card-table mb-4">
-                        <div className="card-header">
-                            <h6 className="slim-card-title">Liste des demandes</h6>
+            </div>
+            <Components.Loader isLoading={isLoading}>
+                <div className="row">
+                    <div className="col-12">
+                        <div className="card card-table mb-4">
+                            <div className="card-header">
+                                <h6 className="slim-card-title">Liste des demandes</h6>
+                            </div>
+                            <div className="table-responsive">
+                                <Components.Table controllers={{handleReadClick, handleDeleteClick}} 
+                                tableAttributes={tableAttributes} tableActions={tableActions} 
+                                tableData={interview_requests}/>
+                            </div>
+                            <Components.Pagination page={page} pageLength={pageLength} />
                         </div>
-                        <div className="table-responsive">
-                            <Components.Table controllers={{handleReadClick, handleDeleteClick}} 
-                            tableAttributes={tableAttributes} tableActions={tableActions} 
-                            tableData={interview_requests}/>
-                        </div>
-                        <Components.Pagination page={page} pageLength={pageLength} />
                     </div>
                 </div>
-            </div>
+            </Components.Loader>
         </>
     )
 }

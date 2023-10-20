@@ -22,7 +22,7 @@ export function RecruiterListView(props) {
     const [recruiters, setRecruiters] = useState([]);
     const [page, setPage] = useState(1);
     const [pageLength, setPageLength] = useState(1);
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     const handleEditClick = (e, data) => {
         e.preventDefault();
@@ -94,21 +94,23 @@ export function RecruiterListView(props) {
                 </ol>
                 <h6 className="slim-pagetitle">Recruteurs</h6>
             </div> 
-            <div className="row">
-                <div className="col-12">
-                    <div className="card card-table mb-4">
-                        <div className="card-header">
-                            <h6 className="slim-card-title">Liste des recruteurs</h6>
+            <Components.Loader isLoading={isLoading}>
+                <div className="row">
+                    <div className="col-12">
+                        <div className="card card-table mb-4">
+                            <div className="card-header">
+                                <h6 className="slim-card-title">Liste des recruteurs</h6>
+                            </div>
+                            <div className="table-responsive">
+                                <Components.Table controllers={{handleEditClick, handleDeleteClick}} 
+                                tableAttributes={tableAttributes} tableActions={tableActions} 
+                                tableData={recruiters}/>
+                            </div>
+                            <Components.Pagination page={page} pageLength={pageLength} />
                         </div>
-                        <div className="table-responsive">
-                            <Components.Table controllers={{handleEditClick, handleDeleteClick}} 
-                            tableAttributes={tableAttributes} tableActions={tableActions} 
-                            tableData={recruiters}/>
-                        </div>
-                        <Components.Pagination page={page} pageLength={pageLength} />
                     </div>
                 </div>
-            </div>
+            </Components.Loader>
         </>
     )
 }

@@ -19,7 +19,7 @@ export function RoleListView(props) {
     const navigate = useNavigate();
 
     const [roles, setJob_titles] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     const handleEditClick = (e, data) => {
         e.preventDefault();
@@ -82,20 +82,22 @@ export function RoleListView(props) {
                 </ol>
                 <h6 className="slim-pagetitle">Role</h6>
             </div> 
-            <div className="row">
-                <div className="col-12">
-                    <div className="card card-table mb-4">
-                        <div className="card-header">
-                            <h6 className="slim-card-title">Liste des role</h6>
-                        </div>
-                        <div className="table-responsive">
-                            <Components.Table controllers={{handleEditClick, handleDeleteClick}} 
-                            tableAttributes={tableAttributes} tableActions={tableActions} 
-                            tableData={roles}/>
+            <Components.Loader isLoading={isLoading}>
+                <div className="row">
+                    <div className="col-12">
+                        <div className="card card-table mb-4">
+                            <div className="card-header">
+                                <h6 className="slim-card-title">Liste des role</h6>
+                            </div>
+                            <div className="table-responsive">
+                                <Components.Table controllers={{handleEditClick, handleDeleteClick}} 
+                                tableAttributes={tableAttributes} tableActions={tableActions} 
+                                tableData={roles}/>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </Components.Loader>
         </>
     )
 }

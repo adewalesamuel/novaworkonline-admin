@@ -18,7 +18,7 @@ export function JobTitleListView(props) {
     const navigate = useNavigate();
 
     const [job_titles, setJob_titles] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     const handleEditClick = (e, data) => {
         e.preventDefault();
@@ -80,20 +80,22 @@ export function JobTitleListView(props) {
                 </ol>
                 <h6 className="slim-pagetitle">Domaines</h6>
             </div> 
-            <div className="row">
-                <div className="col-12">
-                    <div className="card card-table mb-4">
-                        <div className="card-header">
-                            <h6 className="slim-card-title">Liste des domaines</h6>
-                        </div>
-                        <div className="table-responsive">
-                            <Components.Table controllers={{handleEditClick, handleDeleteClick}} 
-                            tableAttributes={tableAttributes} tableActions={tableActions} 
-                            tableData={job_titles}/>
+            <Components.Loader isLoading={isLoading}>
+                <div className="row">
+                    <div className="col-12">
+                        <div className="card card-table mb-4">
+                            <div className="card-header">
+                                <h6 className="slim-card-title">Liste des domaines</h6>
+                            </div>
+                            <div className="table-responsive">
+                                <Components.Table controllers={{handleEditClick, handleDeleteClick}} 
+                                tableAttributes={tableAttributes} tableActions={tableActions} 
+                                tableData={job_titles}/>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </Components.Loader>
         </>
     )
 }

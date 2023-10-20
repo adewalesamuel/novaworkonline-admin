@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Components } from '../components';
 import { useCallback, useEffect, useState } from 'react';
 import { Services } from '../services';
@@ -112,40 +112,42 @@ export function DashboardView(props) {
             </div>
           </div>
 
-          <div className="row row-sm mg-t-20">
-            <div className="col-xl-6">
-              <div className="card card-table">
-                <div className="card-header">
-                  <h6 className="slim-card-title">Nouveaux Candidats qualifiés</h6>
+          <Components.Loader isLoading={isLoading}>
+            <div className="row row-sm mg-t-20">
+              <div className="col-xl-6">
+                <div className="card card-table">
+                  <div className="card-header">
+                    <h6 className="slim-card-title">Nouveaux Candidats qualifiés</h6>
+                  </div>
+                  <div className="table-responsive">
+                    <Components.Table tableAttributes={userTableAttributes} controllers={{}}
+                    tableActions={tableActions} tableData={usersQualified}/>
+                  </div>
+                  <div className="card-footer tx-12 pd-y-15 bg-transparent">
+                    <Link to="/candidats-qualifies">
+                      <i className="fa fa-angle-down mg-r-5"></i>Voir tous les candidats
+                    </Link>
+                  </div>
                 </div>
-                <div className="table-responsive">
-                  <Components.Table tableAttributes={userTableAttributes} controllers={{}}
-                  tableActions={tableActions} tableData={usersQualified}/>
-                </div>
-                <div className="card-footer tx-12 pd-y-15 bg-transparent">
-                  <Link to="/candidats-qualifies">
-                    <i className="fa fa-angle-down mg-r-5"></i>Voir tous les candidats
-                  </Link>
+              </div>
+              <div className="col-xl-6 mg-t-20 mg-xl-t-0">
+                <div className="card card-table">
+                  <div className="card-header">
+                    <h6 className="slim-card-title">Nouveaux Recruteurs</h6>
+                  </div>
+                  <div className="table-responsive">
+                    <Components.Table tableAttributes={recruiterTableAttributes} controllers={{}}
+                    tableActions={tableActions} tableData={recruiters}/>
+                  </div>
+                  <div className="card-footer tx-12 pd-y-15 bg-transparent">
+                    <Link to="/recruteurs">
+                      <i className="fa fa-angle-down mg-r-5"></i>Voir tous les recruteurs
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
-            <div className="col-xl-6 mg-t-20 mg-xl-t-0">
-              <div className="card card-table">
-                <div className="card-header">
-                  <h6 className="slim-card-title">Nouveaux Recruteurs</h6>
-                </div>
-                <div className="table-responsive">
-                  <Components.Table tableAttributes={recruiterTableAttributes} controllers={{}}
-                  tableActions={tableActions} tableData={recruiters}/>
-                </div>
-                <div className="card-footer tx-12 pd-y-15 bg-transparent">
-                  <Link to="/recruteurs">
-                    <i className="fa fa-angle-down mg-r-5"></i>Voir tous les recruteurs
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
+          </Components.Loader>
         </>
     )
 }

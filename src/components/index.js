@@ -23,6 +23,8 @@ import { Table } from './Table';
 import { Container } from './Container';
 import { ImageFileInput } from './ImageFileInput';
 import { Pagination } from './Pagination';
+import { Loader } from './Loader';
+import { Spinner } from './Spinner';
 
 export const Components = {
     CountryForm,
@@ -49,5 +51,7 @@ export const Components = {
 	Table,
 	Container,
 	ImageFileInput,
-	Pagination
+	Pagination,
+	Loader,
+	Spinner
 }
