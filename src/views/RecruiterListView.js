@@ -15,7 +15,7 @@ export function RecruiterListView(props) {
         'responsable': {},
         'date d\'inscription': {}
     }
-    const tableActions = ['edit', 'delete'];
+    const tableActions = ['mail', 'edit', 'delete'];
     
     const navigate = useNavigate();
 
@@ -23,6 +23,34 @@ export function RecruiterListView(props) {
     const [page, setPage] = useState(1);
     const [pageLength, setPageLength] = useState(1);
     const [isLoading, setIsLoading] = useState(true);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [email, setEmail] = useState('');
+    const [message, setMessage] = useState('');
+    const [isDisabled, setisDisabled] = useState(false);
+
+    const handleMailClick = (e, data) => {
+        e.preventDefault();
+
+        setEmail(data['email']);
+        setIsModalOpen(true);
+    }
+
+    const handleMessageSubmit = async () => {
+        setisDisabled(true);
+
+        try {
+            await Services.MessageService.create(
+                JSON.stringify({email, message}), abortController.signal)    
+        } catch (error) {
+            console.log(error);
+        }finally{
+            setIsModalOpen(false);
+            setisDisabled(false);
+            setEmail('');
+            setMessage('');
+        }
+
+    }
 
     const handleEditClick = (e, data) => {
         e.preventDefault();
@@ -52,8 +80,10 @@ export function RecruiterListView(props) {
             return {
                 'id': recruiter.id,
                 'companie': recruiter.company_name,
-                'responsable': `${recruiter.lastname} ${recruiter.firstname}`,
-                'date d\'inscription': recruiter.created_at
+                'responsable': `${recruiter.lastname ?? ""} ${recruiter.firstname ?? ""}`,
+                'date d\'inscription': recruiter.created_at,
+                'email': recruiter.email
+
             }
         } ));
     }
@@ -102,15 +132,22 @@ export function RecruiterListView(props) {
                                 <h6 className="slim-card-title">Liste des recruteurs</h6>
                             </div>
                             <div className="table-responsive">
-                                <Components.Table controllers={{handleEditClick, handleDeleteClick}} 
-                                tableAttributes={tableAttributes} tableActions={tableActions} 
-                                tableData={recruiters}/>
+                                <Components.Table controllers={{handleEditClick, handleDeleteClick,
+                                handleMailClick}} tableAttributes={tableAttributes} 
+                                tableActions={tableActions} tableData={recruiters}/>
                             </div>
                             <Components.Pagination page={page} pageLength={pageLength} />
                         </div>
                     </div>
                 </div>
             </Components.Loader>
+            {isModalOpen ? 
+              <Components.Modal title={"Envoyer un message"}
+              isControlVisible={false} handleModalClose={() => setIsModalOpen(false)}>
+                <Components.MessageForm email={email} setEmail={setEmail} message={message}
+                setMessage={setMessage} isDisabled={isDisabled} handleFormSubmit={handleMessageSubmit}/>
+              </Components.Modal>
+            : null}
         </>
     )
 }

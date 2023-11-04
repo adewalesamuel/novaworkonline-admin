@@ -33,7 +33,7 @@ const get = (endpoint, signal=new AbortController().signal) => {
             return response.json();
         })
         .then(result => {
-            resolve(result)
+            resolve(result);
         })
         .catch(error => reject(error))
     })
@@ -142,6 +142,9 @@ const erase = (endpoint, signal=new AbortController().signal) => {
 }
 
 const getResponseErrors = response => {
+    if (response.status === 401) 
+        return Utils.Auth.redirectIfSessionExpired(response);
+
     return new Promise((resolve, reject) => {
         if (!response) reject(null);
         

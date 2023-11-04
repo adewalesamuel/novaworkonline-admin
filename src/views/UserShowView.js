@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { Services } from "../services";
 import { Hooks } from "../hooks";
 import { Components } from "../components";
+import { Utils } from "../utils";
 
 export function UserShowView(props) {
     let abortController = new AbortController();
@@ -18,7 +19,7 @@ export function UserShowView(props) {
     const { id } = useParams();
     const [isDisabled, setIsDisabled] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
-
+ 
     const init = useCallback(async () => {
         try {
             const {user} = await UserService.getById(id, 
@@ -40,8 +41,13 @@ export function UserShowView(props) {
       setIsDisabled(true);
 
       try {
+        const {isConfirmed} = await Utils.SweetAlert.fireAlert(
+          'qualifier', 'ce candidat');
+
+      if (isConfirmed) {
         await UserService.qualify(id, abortController.signal); 
         navigate('/candidats-qualifies');
+      }
       } catch (error) {
         console.log(error);
       }finally{setIsDisabled(false)};
@@ -96,8 +102,8 @@ export function UserShowView(props) {
                     {!user.is_qualified ? 
                       <li className="nav-item">
                         <span className="nav-link" role="button" onClick={handleQualifyClick}>
-                          <i className="icon ion-checkmark tx-success"></i>&nbsp;
-                          {isDisabled ? "Chargement..." : "Qualifer"}
+                          <i className="icon ion-android-warning tx-warning"></i>&nbsp;
+                          {isDisabled ? "Chargement..." : "Cliquer pour qualifier"}
                         </span>
                       </li>
                     : null}

@@ -15,7 +15,7 @@ export function UserQualifiedListView(props) {
         'domaine': {},
         'date d\'inscription': {}
     }
-    const tableActions = ['edit', 'delete'];
+    const tableActions = ['mail', 'edit', 'delete'];
     
     const navigate = useNavigate();
 
@@ -23,6 +23,34 @@ export function UserQualifiedListView(props) {
     const [page, setPage] = useState(1);
     const [pageLength, setPageLength] = useState(1);
     const [isLoading, setIsLoading] = useState(true);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [email, setEmail] = useState('');
+    const [message, setMessage] = useState('');
+    const [isDisabled, setisDisabled] = useState(false);
+
+    const handleMailClick = (e, data) => {
+        e.preventDefault();
+
+        setEmail(data['email']);
+        setIsModalOpen(true);
+    }
+
+    const handleMessageSubmit = async () => {
+        setisDisabled(true);
+
+        try {
+            await Services.MessageService.create(
+                JSON.stringify({email, message}), abortController.signal)    
+        } catch (error) {
+            console.log(error);
+        }finally{
+            setIsModalOpen(false);
+            setisDisabled(false);
+            setEmail('');
+            setMessage('');
+        }
+
+    }
 
     const handleEditClick = (e, data) => {
         e.preventDefault();
@@ -52,7 +80,9 @@ export function UserQualifiedListView(props) {
                 'nom et prenoms': (<Link to={`/candidats/${user.id}`}>
                     {user.lastname} {user.firstname}</Link>),
                 'domaine': user.job_title?.name ?? "",
-                'date d\'inscription': user.created_at
+                'date d\'inscription': user.created_at,
+                'email': user.email
+
             }
         } ));
     }
@@ -101,15 +131,22 @@ export function UserQualifiedListView(props) {
                                 <h6 className="slim-card-title">Liste des candidats qualifiés</h6>
                             </div>
                             <div className="table-responsive">
-                                <Components.Table controllers={{handleEditClick, handleDeleteClick}} 
-                                tableAttributes={tableAttributes} tableActions={tableActions} 
-                                tableData={users}/>
+                                <Components.Table controllers={{handleEditClick, handleDeleteClick,
+                                 handleMailClick}}  tableAttributes={tableAttributes} 
+                                 tableActions={tableActions} tableData={users}/>
                             </div>
                             <Components.Pagination page={page} pageLength={pageLength} />
                         </div>
                     </div>
                 </div>
             </Components.Loader> 
+            {isModalOpen ? 
+              <Components.Modal title={"Envoyer un message"}
+              isControlVisible={false} handleModalClose={() => setIsModalOpen(false)}>
+                <Components.MessageForm email={email} setEmail={setEmail} message={message}
+                setMessage={setMessage} isDisabled={isDisabled} handleFormSubmit={handleMessageSubmit}/>
+              </Components.Modal>
+            : null}
         </>
     )
 }

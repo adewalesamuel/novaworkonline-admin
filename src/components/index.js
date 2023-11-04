@@ -25,6 +25,8 @@ import { ImageFileInput } from './ImageFileInput';
 import { Pagination } from './Pagination';
 import { Loader } from './Loader';
 import { Spinner } from './Spinner';
+import { Modal } from './Modal';
+import { MessageForm } from './forms/MessageForm';
 
 export const Components = {
     CountryForm,
@@ -53,5 +55,7 @@ export const Components = {
 	ImageFileInput,
 	Pagination,
 	Loader,
-	Spinner
+	Spinner,
+	Modal,
+	MessageForm
 }

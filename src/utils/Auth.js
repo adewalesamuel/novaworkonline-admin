@@ -22,13 +22,10 @@ const removeSessionToken = () => {
     localStorage.removeItem('user');
 }
 
-const redirectIfSessionExpired = (err, history) => {
-    if (!err) return;
-    
-    if (err.status && err.status === 'Token is Expired') {
-        removeSessionToken();
-        history.push('/login');
-    }
+const redirectIfSessionExpired = () => {
+    removeSessionToken();
+    console.log('not logged in');
+    window.location.assign('/connexion');
 }
 
 const getUser = () => {

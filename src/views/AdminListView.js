@@ -51,7 +51,7 @@ export function AdminListView(props) {
             const adminsData = admins.map(admin => {
                 return {
                     'id': admin.id,
-                    'nom': `${admin.lastname} ${admin.firstname}`,
+                    'nom': `${admin.lastname ?? ""} ${admin.firstname ?? ""}`,
                     'role': admin.role?.name,
                     'date de creation': admin.created_at,
                 }

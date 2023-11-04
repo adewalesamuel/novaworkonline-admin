@@ -2,10 +2,11 @@ export function Table(props) {
     const ACTIONS = {
         EDIT: 'edit',
         READ: 'read',
-        DELETE: 'delete'
+        DELETE: 'delete',
+        MAIL: 'mail'
     };
     const {tableAttributes, tableData, tableActions, controllers} = props;
-    const {handleEditClick, handleReadClick, handleDeleteClick} = controllers;
+    const {handleEditClick, handleReadClick, handleDeleteClick, handleMailClick} = controllers;
 
     const renderEditButton = data => (
         <button className="flex align-center mr-2 btn btn-success rounded btn-sm" 
@@ -25,6 +26,13 @@ export function Table(props) {
         <button className="flex align-center btn btn-danger rounded btn-sm" 
         onClick={e => handleDeleteClick(e, data)} key={Math.random()}> 
             <i className="fa fa-trash w-4 h-4 mr-1"> Supprimer </i>
+        </button>
+        );
+
+    const renderMailButton = data => (
+        <button className="flex align-center btn btn-secondary rounded btn-sm mr-2" 
+        onClick={e => handleMailClick(e, data)} key={Math.random()}> 
+            <i className="fa fa-envelope w-4 h-4"> </i>
         </button>
         );
 
@@ -59,6 +67,8 @@ export function Table(props) {
             <td className="table-report__action w-56" key={Math.random()}>
                 {tableActions.map((action, index) => {
                     switch (action) {
+                        case ACTIONS.MAIL:
+                            return renderMailButton(data);
                         case ACTIONS.EDIT:
                             return renderEditButton(data);
                         case ACTIONS.READ:
