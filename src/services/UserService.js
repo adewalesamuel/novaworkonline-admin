@@ -5,11 +5,11 @@ const  ENPOINTS = {
 };
 
 const getQualified = (params, signal) => {
-    return Api.get(`${ENPOINTS.User}/qualified/?page=${params?.page ?? 1}`, signal)
+    return Api.get(`${ENPOINTS.User}/qualified?page=${params?.page ?? 1}`, signal)
 }
 
 const getAll = (params, signal) => {
-    return Api.get(`${ENPOINTS.User}/?page=${params?.page ?? 1}`, signal)
+    return Api.get(`${ENPOINTS.User}?page=${params?.page ?? 1}`, signal)
 }
 
 const getById = (id, signal) => {

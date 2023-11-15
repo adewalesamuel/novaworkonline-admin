@@ -1,5 +1,3 @@
-import imgPlaceholder from '../assets/img/img0.jpg';
-
 export function ImageFileInput(props) {
 
     return (
@@ -8,7 +6,7 @@ export function ImageFileInput(props) {
                 <input type='file' onChange={e => props.handleFileChange(e.target.files[0])} 
                 accept='image/*'style={{position: "absolute", top: 0, left: 0, width: '100%', 
                 height: "100%", opacity: 0}} role='button'/>
-                <img src={props.img_url !== '' ? props.img_url : imgPlaceholder} 
+                <img src={props.img_url !== '' ? props.img_url : "http://via.placeholder.com/500x500"} 
                 className="img-fluid rounded" alt=""/>
             </div>
         </span>

@@ -12,6 +12,11 @@ export function MessageForm(props) {
                         disabled={props.isDisabled} required onChange={ e => 
                         props.setEmail(e.target.value) ?? null}/>
                     </div>
+                    <div className='form-group'>
+                        <label htmlFor='subject'>Objet</label>
+                        <input className='form-control' type='text' id='subject' name='email' 
+                        placeholder='Objet'/>
+                    </div>
                 </div>
 				<div className='col-12'>
                     <div className='form-group'>
@@ -20,6 +25,12 @@ export function MessageForm(props) {
                         value={props.message ?? ''} disabled={props.isDisabled} rows={4} 
                         onChange={ e => props.setMessage(e.target.value) ?? null}></textarea>
                     </div>
+                </div>
+                <div className='col-12'>
+                    <div className='form-group'>
+                            <label htmlFor='attachment'>Piece jointe</label>
+                            <input className='form-control' type='file' id='attachment' name='attachment'/>
+                        </div>
                 </div>
                 <div className='col-12 text-right'>
                     <button disabled={props.isDisabled ?? false} type='button' 
