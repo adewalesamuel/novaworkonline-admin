@@ -52,7 +52,7 @@ export function Mainmenu(props){
                         <i className="icon ion-ios-briefcase-outline"></i> Candidats recrutés
                     </NavLink>
                 </li>
-                <li className="sidebar-nav-item with-sub">
+                {/* <li className="sidebar-nav-item with-sub">
                     <NavLink to="/formations" className="sidebar-nav-link">
                         <i className="icon ion-laptop"></i> Formations
                     </NavLink>
@@ -64,15 +64,15 @@ export function Mainmenu(props){
                             <Link to="/formations" className="nav-sub-link">Liste</Link>
                         </li>
                     </ul>
-                </li>
+                </li> */}
                 <li className="sidebar-nav-item with-sub">
                     <NavLink to="/paiements" className="sidebar-nav-link">
                         <i className="icon ion-card"></i> Paiements
                     </NavLink>
                     <ul className="nav sidebar-nav-sub">
-                        <li className="nav-sub-item">
+                        {/* <li className="nav-sub-item">
                             <Link to="/page-create.html" className="nav-sub-link">Ajouter</Link>
-                        </li>
+                        </li> */}
                         <li className="nav-sub-item">
                             <Link to="/page-list.html" className="nav-sub-link">Liste</Link>
                         </li>

@@ -112,7 +112,7 @@ export function UserForm(props) {
                         </select>
                     </div>
                 </div>
-				<div className='col-12'>
+				<div className='col-12 col-sm-6'>
                     <div className='form-group'>
                         <label htmlFor='job_title_id'>Domaine</label>
                         <select className='select2 form-control' id='job_title_id' name='job_title_id'
@@ -125,6 +125,14 @@ export function UserForm(props) {
                                 })
                             } 
                         </select>
+                    </div>
+                </div>
+                <div className='col-12 col-sm-6'>
+                    <div className='form-group'>
+                        <label htmlFor='score'>Score au test</label>
+                        <input className='form-control' type='number' id='score' name='score' 
+                        placeholder='Score' value={props.useUser.score ?? ''} disabled={props.isDisabled} 
+                        onChange={ e => props.useUser.setScore(e.target.value) ?? null} required/>
                     </div>
                 </div>
                 <div className='col-12'>
