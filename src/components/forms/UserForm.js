@@ -4,7 +4,7 @@ import { Services } from "../../services";
 export function UserForm(props) {
     const abortController = new AbortController(); 
 
-    const handleFileUpload = async file => {
+    const handleFileUpload = async (e, file) => {
         props.useUser.setIsDisabled(true);
         
         try {
@@ -15,9 +15,39 @@ export function UserForm(props) {
             const {img_url} = await Services.FileService.store(
                 formData, abortController.signal);
 
-            props.useUser.setProfil_img_url(img_url);
-        } catch (error) {
+            const targetName = e.target.name;
+
+            const payload = {
+                firstname: props.useUser.firstname,
+                lastname: props.useUser.lastname,
+                email: props.useUser.email,
+                password: props.useUser.password,
+                birth_date: props.useUser.birth_date,
+                gender: props.useUser.gender,
+                phone_number: props.useUser.phone_number,
+                city: props.useUser.city,
+                profil_img_url: props.useUser.profil_img_url,
+                country_id: props.useUser.country_id,
+                job_title_id: props.useUser.job_title_id,
+                certificat_url: props.useUser.certificat_url,
+                video_url: props.useUser.video_url,
+                score: props.useUser.score,
+            }
             
+            if (targetName === "certificat") {
+                props.useUser.setCertificat_url(img_url);
+                payload.certificat_url = img_url;
+            }
+
+            if (targetName === "profil_img_url" || targetName === "") {
+                props.useUser.setProfil_img_url(img_url);
+                payload.profil_img_url = img_url;
+            }
+
+            await Services.UserService.update(props.useUser.id, 
+                JSON.stringify(payload), abortController.signal);
+        } catch (error) {
+            console.log(error);
         }finally {props.useUser.setIsDisabled(false)}
     }
 
@@ -133,6 +163,14 @@ export function UserForm(props) {
                         <input className='form-control' type='number' id='score' name='score' 
                         placeholder='Score' value={props.useUser.score ?? ''} disabled={props.isDisabled} 
                         onChange={ e => props.useUser.setScore(e.target.value) ?? null} required/>
+                    </div>
+                </div>
+                <div className='col-12'>
+                    <div className='form-group'>
+                        <label htmlFor='certificat'>Certificat</label>
+                        <input className='form-control' type='file' accept="image/*,.doc,.docx,.pdf" 
+                        id='certificat' name='certificat' placeholder='Score' disabled={props.isDisabled} 
+                        onChange={e => handleFileUpload(e, e.target.files[0])} required/>
                     </div>
                 </div>
                 <div className='col-12'>

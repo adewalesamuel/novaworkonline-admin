@@ -119,7 +119,7 @@ export function UserShowView(props) {
                         <div><i className="icon ion-link tx-24 lh-0"></i></div>
                         <div className="media-body mg-l-15 mg-t-4">
                           <h6 className="tx-14 tx-gray-700">Lien du certificat</h6>
-                          <p>
+                          <p style={{wordBreak:'break-word'}}>
                             <a href={user.certificat_url} target="_blank" rel="noreferrer">
                               {user.certificat_url}
                             </a>
