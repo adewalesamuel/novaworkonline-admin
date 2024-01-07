@@ -55,14 +55,14 @@ export function RecruiterForm(props) {
                         onChange={e => props.useRecruiter.setEmail(e.target.value) ?? null} required />
                     </div>
                 </div>
-                <div className='col-12 col-sm-6'>
+                {/* <div className='col-12 col-sm-6'>
                     <div className='form-group'>
                         <label htmlFor='birth_date'>Date de naissance</label>
                         <input className='form-control' type='date' id='birth_date' name='birth_date' 
                         placeholder='Date de naissance' value={props.useRecruiter.birth_date ?? ''} disabled={props.isDisabled} 
                         onChange={e => props.useRecruiter.setBirth_date(e.target.value) ?? null} required />
                     </div>
-                </div>
+                </div> */}
                 <div className='col-12 col-sm-6'>
                     <div className='form-group'>
                         <label htmlFor='gender'>Genre</label>
@@ -85,9 +85,9 @@ export function RecruiterForm(props) {
                 </div>
                 <div className='col-12'>
                     <div className='form-group'>
-                        <label htmlFor='location'>Localisation</label>
+                        <label htmlFor='location'>Ville</label>
                         <input className='form-control' type='text' id='location' name='location' 
-                        placeholder='Localisation' value={props.useRecruiter.location ?? ''} disabled={props.isDisabled} 
+                        placeholder='Ville' value={props.useRecruiter.location ?? ''} disabled={props.isDisabled} 
                         onChange={e => props.useRecruiter.setLocation(e.target.value) ?? null} required />
                     </div>
                 </div>
@@ -107,7 +107,11 @@ export function RecruiterForm(props) {
                         onChange={e => props.useRecruiter.setCountry_id(e.target.value) ?? null} required>
                             {
                                 props.countries.map(country => {
-                                    return <option key={Math.random()} value={country.id ?? ''}>{country.name}</option>
+                                    return (
+                                        country.name.toLowerCase().includes('canada') && 
+                                        <option key={Math.random()} value={country.id ?? ''}>
+                                            {country.name
+                                        }</option>)
                                 })
                             }
                         </select>
