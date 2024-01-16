@@ -6,6 +6,7 @@ export const useJobTitle = () => {
 	const [name, setName] = useState('');
 	const [slug, setSlug] = useState('');
 	const [description, setDescription] = useState('');
+    const [course_link_url, setCourse_link_url] = useState('');
 	const [icon_url, setIcon_url] = useState('');
 	
 
@@ -24,6 +25,7 @@ export const useJobTitle = () => {
         const payload = {
             name,
 		description,
+		course_link_url,
 		icon_url,
 		
         };
@@ -34,6 +36,7 @@ export const useJobTitle = () => {
         const payload = {
             name,
 		description,
+		course_link_url,
 		icon_url,
 		
         };
@@ -47,6 +50,7 @@ export const useJobTitle = () => {
         setId(job_title.id);
         setName(job_title.name ?? '');
 		setDescription(job_title.description ?? '');
+		setCourse_link_url(job_title.course_link_url ?? '');
 		setIcon_url(job_title.icon_url ?? '');
 		
     }
@@ -55,6 +59,7 @@ export const useJobTitle = () => {
         setName('');
 		setSlug('');
 		setDescription('');
+        setCourse_link_url('');
 		setIcon_url('');
 		
     }
@@ -64,6 +69,7 @@ export const useJobTitle = () => {
         name,
 		slug,
 		description,
+        course_link_url,
 		icon_url,
 		
         errors,
@@ -71,6 +77,7 @@ export const useJobTitle = () => {
         setName,
 		setSlug,
 		setDescription,
+        setCourse_link_url,
 		setIcon_url,
 		
         setId,

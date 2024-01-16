@@ -71,7 +71,7 @@ export function AdminForm(props) {
                         props.useAdmin.setPhone_number(e.target.value) ?? null} required/>
                     </div>
                 </div>
-				<div className='col-6'>
+				{/* <div className='col-6'>
                     <div className='form-group'>
                         <label htmlFor='country_id'>Pays</label>
                         <select className='select2 form-control' id='country_id' name='country_id' 
@@ -85,10 +85,10 @@ export function AdminForm(props) {
                             } 
                         </select>
                     </div>
-                </div>
-				<div className='col-12'>
+                </div> */}
+				<div className='col-6'>
                     <div className='form-group'>
-                        <label htmlFor='role_id'>Role</label>
+                        <label htmlFor='role_id'>Niveau d'access</label>
                         <select className='select2 form-control' id='role_id' name='role_id' 
                         value={props.useAdmin.role_id ?? ''} disabled={props.isDisabled} 
                         onChange={ e => props.useAdmin.setRole_id(e.target.value) ?? null} required>

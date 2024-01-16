@@ -10,7 +10,7 @@ export function SettingsView(props) {
         if (pathname !== '/paramettres') return;
         if (window.innerWidth <= 1200) return;
         
-        navigate('/paramettres/domaines');
+        navigate('/paramettres/pays');
     }, [pathname])
     return (
         <>
@@ -31,16 +31,10 @@ export function SettingsView(props) {
                         <Route path='/pays/:id/modifier' element={<Views.CountryEditView />}/>
                         <Route path='/pays/creer' element={<Views.CountryCreateView />}/>
                         <Route path='/pays' element={<Views.CountryListView />}/>
-                        <Route path='/domaines/:id/modifier' element={<Views.JobTitleEditView />}/>
-                        <Route path='/domaines/creer' element={<Views.JobTitleCreateView />}/>
-                        <Route path='/domaines' element={<Views.JobTitleListView />}/>
                     </Routes>
                 </div>
                 <div className="manager-left d-block">
                     <nav className="nav">
-                        <NavLink to="/paramettres/domaines" className="nav-link">
-                            <span>Domaines</span>
-                        </NavLink>
                         <NavLink to="/paramettres/pays" className="nav-link">
                             <span>Pays</span>
                         </NavLink>
@@ -48,7 +42,7 @@ export function SettingsView(props) {
                             <span>Roles</span>
                         </NavLink>
                         <NavLink to="/paramettres/admins" className="nav-link">
-                            <span>Administrateurs</span>
+                            <span>Equipe</span>
                         </NavLink>
                     </nav>
                 </div>

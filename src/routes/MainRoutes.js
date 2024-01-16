@@ -9,6 +9,9 @@ export function MainRoutes(props){
                 <Route path="/paramettres/*" element={<Views.SettingsView />}/>
                 <Route path="/demandes-entretien/:id" element={<Views.InterviewRequestShowView />}/>
                 <Route path="/demandes-entretien" element={<Views.InterviewRequestListView />}/>
+                <Route path="/formations/:id/modifier" element={<Views.JobTitleEditView />}/>
+                <Route path="/formations/creer" element={<Views.JobTitleCreateView />}/>
+                <Route path="/formations" element={<Views.JobTitleListView />}/>
                 <Route path="/recrutements" element={<Views.EmployeeListView />}/>
                 <Route path="/recruteurs/:id/modifier" element={<Views.RecruiterEditView />}/>
                 <Route path="/recruteurs/creer" element={<Views.RecruiterCreateView />}/>

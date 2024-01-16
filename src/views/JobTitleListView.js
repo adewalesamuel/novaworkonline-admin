@@ -22,13 +22,13 @@ export function JobTitleListView(props) {
 
     const handleEditClick = (e, data) => {
         e.preventDefault();
-        navigate(`/paramettres/domaines/${data.id}/modifier`);
+        navigate(`/formations/${data.id}/modifier`);
     }
     const handleDeleteClick = async (e, job_title) => {
         e.preventDefault();
 
         const {isConfirmed} = await Utils.SweetAlert.fireAlert(
-            'supprimer', 'ce domaine');
+            'supprimer', 'cette formation');
 
         if (isConfirmed) {
             const job_titlesCopy = [...job_titles];
@@ -74,18 +74,18 @@ export function JobTitleListView(props) {
         <>
             <div className="slim-pageheader">
                 <ol className="breadcrumb slim-breadcrumb">
-                    <Link className="btn btn-info" to='/paramettres/domaines/creer'>
-                        <i className="con ion-plus"></i> Ajouter un domaine
+                    <Link className="btn btn-info" to='/formations/creer'>
+                        <i className="con ion-plus"></i> Ajouter une formation
                     </Link>
                 </ol>
-                <h6 className="slim-pagetitle">Domaines</h6>
+                <h6 className="slim-pagetitle">Formations</h6>
             </div> 
             <Components.Loader isLoading={isLoading}>
                 <div className="row">
                     <div className="col-12">
                         <div className="card card-table mb-4">
                             <div className="card-header">
-                                <h6 className="slim-card-title">Liste des domaines</h6>
+                                <h6 className="slim-card-title">Liste des formations</h6>
                             </div>
                             <div className="table-responsive">
                                 <Components.Table controllers={{handleEditClick, handleDeleteClick}} 

@@ -59,7 +59,7 @@ export function AdminCreateView(props) {
             <div className="slim-pageheader">
                 <ol className="breadcrumb slim-breadcrumb">
                 </ol>
-                <h6 className="slim-pagetitle">Créer un administrateur</h6>
+                <h6 className="slim-pagetitle">Créer un membre</h6>
             </div> 
             <div className="row" style={{maxWidth: "600px"}}>
                 <div className="col-12">

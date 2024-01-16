@@ -77,17 +77,17 @@ export function AdminListView(props) {
             <div className="slim-pageheader">
                 <ol className="breadcrumb slim-breadcrumb">
                     <Link className="btn btn-info" to='/paramettres/admins/creer'>
-                        <i className="con ion-plus"></i> Ajouter un admin
+                        <i className="con ion-plus"></i> Ajouter un membre
                     </Link>
                 </ol>
-                <h6 className="slim-pagetitle">Admin</h6>
+                <h6 className="slim-pagetitle">Membres d'equipe</h6>
             </div> 
             <Components.Loader isLoading={isLoading}>
                 <div className="row">
                     <div className="col-12">
                         <div className="card card-table mb-4">
                             <div className="card-header">
-                                <h6 className="slim-card-title">Liste des admin</h6>
+                                <h6 className="slim-card-title">Liste des membres</h6>
                             </div>
                             <div className="table-responsive">
                                 <Components.Table controllers={{handleEditClick, handleDeleteClick}} 
