@@ -3,8 +3,9 @@ import { Components } from '../components';
 import { useCallback, useEffect, useState } from 'react';
 import { Services } from '../services';
 
-import candidatIcon from '../assets/img/candidats-icon.png';
-import recruteurIcon from '../assets/img/recruteurs-icon.png';
+import candidatIcon from '../assets/img/candidat.png';
+import candidatQualifieIcon from '../assets/img/candidat-qualifie.png';
+import recruteurIcon from '../assets/img/recruteur.png';
 
 export function DashboardView(props) {
     let abortController = new AbortController();
@@ -62,51 +63,72 @@ export function DashboardView(props) {
     
     return (
         <>
-          <div className="slim-pageheader">
-            <ol className="breadcrumb slim-breadcrumb">
-            </ol>
-            <h6 className="slim-pagetitle">Tableau de bord</h6>
-          </div>
-
-          <div className="card card-dash-one mg-t-20">
-            <div className="row no-gutters">
-              <div className="col-lg-3 col-sm-6 col-12">
-                <i className="icon ion-ios-personadd-outline"></i>
-                <div className="dash-content">
-                  <label className="tx-primary">Candidats</label>
-                  <h2>{analytics.user_count ?? "--"}</h2>
-                </div>
-              </div>
-              <div className="col-lg-3 col-sm-6 col-12">
-                <img src={candidatIcon} width="70px" alt=""/>
-                <div className="dash-content">
-                  <label className="tx-success">Candidats qualifiés</label>
-                  <h2>{analytics.user_qualified_count ?? "--"}</h2>
-                </div>
-              </div>
-              <div className="col-lg-3 col-sm-6 col-12">
-                <i className="icon ion-ios-briefcase-outline"></i>
-                <div className="dash-content">
-                  <label className="tx-success">Candidats recrutés</label>
-                  <h2>{analytics.employee_count ?? "--"}</h2>
-                </div>
-              </div>
-              <div className="col-lg-3 col-sm-6 col-12">
-                <img src={recruteurIcon} width="70px" alt=""/>
-                <div className="dash-content">
-                  <label className="tx-purple">Recruteurs</label>
-                  <h2>{analytics.recruiter_count ?? '--'}</h2>
+          <div className='row align-items-stretch'>
+            <div className='col-lg-2 col-sm-6 col-12 pr-0'>
+              <div className='card h-100 rounded' style={{border: "1px solid #2f1b66"}}>
+                <div className='card-body d-flex p-2 flex-row align-items-start rounded'>
+                  <img src={candidatIcon} width={"50px"} className="img-fluid mr-0" 
+                  alt="" style={{
+                    marginLeft: '-10px'
+                    }}/>
+                  <div className="dash-content">
+                    <strong className="text-primary">Candidats</strong>
+                    <h1 className='text-center text-primary'>{analytics.user_count ?? "--"}</h1>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="card card-dash-one mg-t-20">
-            <div className="row no-gutters">
-              <div className="col-lg-3 col-sm-6 col-12">
-                <i className="icon ion-cash"></i>
-                <div className="dash-content">
-                  <label className="tx-danger">Paiements</label>
-                  <h2>--</h2>
+            <div className='col-lg-2 col-sm-6 col-12 pr-0'>
+              <div className='card h-100 rounded' style={{border: "1px solid #2f1b66 "}}>
+                <div className='card-body d-flex p-2 flex-row align-items-start rounded'>
+                  <img src={candidatQualifieIcon} width={"50px"} className="img-fluid mr-0" 
+                  alt="" style={{
+                    marginLeft: '-10px'
+                    }}/>
+                  <div className="dash-content">
+                    <strong className="" style={{color: "lime"}}>Candidats qualifiés</strong>
+                    <h1 className='text-center text-primary'>{analytics.user_qualified_count ?? "--"}</h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className='col-lg-2 col-sm-6 col-12 pr-0'>
+              <div className='card h-100 rounded' style={{border: "1px solid #2f1b66 "}}>
+                <div className='card-body d-flex p-2 flex-row align-items-start rounded'>
+                  <img src={candidatQualifieIcon} width={"50px"} className="img-fluid mr-0" 
+                  alt="" style={{
+                    marginLeft: '-10px'
+                    }}/>
+                  <div className="dash-content">
+                    <strong style={{
+                      color: "lime"
+                    }}>Candidats en production</strong>
+                    <h1 className='text-center text-primary'>{analytics.employee_count ?? "--"}</h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className='col-lg-2 col-sm-6 col-12 pr-0'>
+              <div className='card h-100 rounded' style={{border: "1px solid #2f1b66 "}}>
+                <div className='card-body d-flex p-2 flex-row align-items-start rounded'>
+                  <img src={recruteurIcon} width={"50px"} className="img-fluid mr-0" 
+                  alt="" style={{marginLeft:'-12px'}}/>
+                  <div className="dash-content">
+                    <strong className="text-primary">Recruteurs</strong>
+                    <h1 className='text-center text-primary'>{analytics.recruiter_count ?? '--'}</h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className='col-lg-2 col-sm-6 col-12 pr-0'>
+              <div className='card h-100 rounded' style={{border: "1px solid #2f1b66 "}}>
+                <div className='card-body d-flex p-2 flex-row align-items-start rounded'>
+                  <img src={candidatIcon} width={"50px"} className="img-fluid mr-0" 
+                  alt="" style={{marginLeft: '-12px'}}/>
+                  <div className="dash-content">
+                    <strong className="text-primary">Paiements</strong>
+                    <h1 className='text-center text-primary'>{"--"}</h1>
+                  </div>
                 </div>
               </div>
             </div>

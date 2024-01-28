@@ -15,10 +15,10 @@ export function MainLayout(props){
 
     return (
         <>
-            <Components.Header />
             <div className="slim-body">
                 <Components.Mainmenu />
                 <div className="slim-mainpanel">
+                    <Components.Header />
                     <div className="container">
                         {props.children}
                     </div>

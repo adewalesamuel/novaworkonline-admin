@@ -1,5 +1,4 @@
 import { Link, useNavigate } from 'react-router-dom';
-import logo from '../assets/img/logo.png';
 import { Utils } from "../utils";
 import { Services } from '../services';
 
@@ -18,16 +17,11 @@ export function Header(props) {
         <div className="slim-header with-sidebar">
             <div className="container-fluid">
                 <div className="slim-header-left">
-                    <h2 className="slim-logo">
-                        <Link to="/">
-                            <img src={logo} width="80" alt="Novaworkonline logo"/>
-                        </Link>
-                    </h2>
                     <div className="search-box">
                         <input type="text" className="form-control" placeholder="Rechercher" />
-                        <button className="btn btn-primary">
+                        {/* <button className="btn btn-primary">
                             <i className="fa fa-search"></i>
-                        </button>
+                        </button> */}
                     </div>
                 </div>
                 <div className="slim-header-right">

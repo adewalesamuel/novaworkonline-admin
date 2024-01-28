@@ -7,9 +7,38 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: #2f1b66;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.sidebar-nav-link, .sidebar-nav-link .icon {
+  border: none;
+  color:#2f1b66;
+}
+
+.sidebar-nav-link.active {
+  background-image: linear-gradient(to right, #2f1b66 0%, #2f1b66 100%);
+}
+
+
+.nav-pills .nav-link.active, .nav-pills .nav-link.active:hover, 
+.nav-pills .nav-link.active:focus {
+  color: #fff;
+  background-color: #2f1b66;
+}
+
+.rounded-pill {
+  border-radius: 500px;
+}
+
+.text-primary {
+  color: #2f1b66 !important;
+}
+
+.bg-blue {
+  background-color: #2f1b66 !important;
 }
