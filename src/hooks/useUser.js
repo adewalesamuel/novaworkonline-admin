@@ -20,6 +20,9 @@ export const useUser = () => {
 	const [certificat_url, setCertificat_url] = useState('')
 	const [video_url, setVideo_url] = useState('')
 	const [score, setScore] = useState('')
+	const [course_login, setCourse_login] = useState('');
+	const [course_link_url, setCourse_link_url] = useState('');
+	const [course_password, setCourse_password] = useState('');
 	
 
     const [errors, setErrors] = useState([]);
@@ -51,7 +54,10 @@ export const useUser = () => {
 		job_title_id,
 		certificat_url,
 		video_url,
-		score,	
+		score,
+		course_login,
+		course_link_url,
+		course_password,	
 		
         };
 
@@ -76,6 +82,9 @@ export const useUser = () => {
 		certificat_url,
 		video_url,
 		score,
+		course_login,
+		course_link_url,
+		course_password,
 		
         };
 
@@ -103,6 +112,9 @@ export const useUser = () => {
 		setCertificat_url(user.certificat_url ?? "");
 		setVideo_url(user.video_url ?? "");
 		setScore(user.score ?? 0);
+		setCourse_link_url(user.course_link_url ?? "");
+		setCourse_login(user.course_login ?? "");
+		setCourse_password(user.course_password ?? "");
 		
     }
     const emptyUser = () => {
@@ -124,6 +136,9 @@ export const useUser = () => {
 		setCertificat_url("");
 		setVideo_url("");
 		setScore("");
+		setCourse_link_url("");
+		setCourse_login("");
+		setCourse_password("");
 		
     }
 
@@ -146,6 +161,9 @@ export const useUser = () => {
 		certificat_url,
 		video_url,
 		score,
+		course_login,
+		course_link_url,
+		course_password,
 		
         errors,
         isDisabled,
@@ -166,6 +184,9 @@ export const useUser = () => {
 		setCertificat_url,
 		setVideo_url,
 		setScore,
+		setCourse_link_url,
+		setCourse_login,
+		setCourse_password,
 		
         setId,
         setErrors,

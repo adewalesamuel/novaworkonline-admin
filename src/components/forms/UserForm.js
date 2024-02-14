@@ -165,12 +165,38 @@ export function UserForm(props) {
                         onChange={ e => props.useUser.setScore(e.target.value) ?? null} required/>
                     </div>
                 </div>
-                <div className='col-12'>
+                <div className='col-6'>
+                    <div className='form-group'>
+                        <label htmlFor='course_login'>Identifiant formation</label>
+                        <input className='form-control' type='text' id='course_login' name='course_login' 
+                        placeholder='Identifiant formation' value={props.useUser.course_login ?? ''} 
+                        disabled={props.isDisabled} onChange={ e => 
+                        props.useUser.setCourse_login(e.target.value) ?? null} required/>
+                    </div>
+                </div>
+                <div className='col-6'>
+                    <div className='form-group'>
+                        <label htmlFor='course_password'>Mot de passe formation</label>
+                        <input className='form-control' type='text' id='course_password' name='course_password' 
+                        placeholder='Mot de passe formation' value={props.useUser.course_password ?? ''} 
+                        disabled={props.isDisabled} onChange={ e => 
+                        props.useUser.setCourse_password(e.target.value) ?? null} required/>
+                    </div>
+                </div>
+                <div className='col-6'>
                     <div className='form-group'>
                         <label htmlFor='certificat'>Certificat</label>
                         <input className='form-control' type='file' accept="image/*,.doc,.docx,.pdf" 
                         id='certificat' name='certificat' placeholder='Score' disabled={props.isDisabled} 
                         onChange={e => handleFileUpload(e, e.target.files[0])} required/>
+                    </div>
+                </div>
+                <div className='col-6'>
+                    <div className='form-group'>
+                        <label htmlFor='score'>Score au test</label>
+                        <input className='form-control' type='number' id='score' name='score' 
+                        placeholder='Score' value={props.useUser.score ?? ''} disabled={props.isDisabled} 
+                        onChange={ e => props.useUser.setScore(e.target.value) ?? null} required/>
                     </div>
                 </div>
                 <div className='col-12'>
